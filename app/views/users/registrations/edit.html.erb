@@ -7,7 +7,7 @@
      <%= f.label :name %><br />
      <%= f.text_field :name, autofocus: true %>
   </div>
-  
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -41,8 +41,8 @@
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
+<h3>User Profile</h3>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+<a class="btn btn-primary" href="<%=new_profile_path(current_user.id,"user")%>" role="button">Tell us more about you</a>
 
 <%= link_to "Back", :back %>
