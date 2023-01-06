@@ -1,6 +1,9 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+gem 'htmlbeautifier'
+
+
 gem "devise"
 
 ruby "3.2.0"
