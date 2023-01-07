@@ -59,7 +59,7 @@ class ProfilesController < ApplicationController
     @profile.destroy
 
     respond_to do |format|
-      format.html { redirect_to profiles_url, notice: "Profile was successfully destroyed." }
+      format.html { redirect_to edit_user_registration_path, notice: "Profile was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,9 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
+      # file = params[:avatar]
+      # file_data = file.read
+      # file_base64 = Base64.encode64(file_data)
       params.require(:profile).permit(:user_id, :avatar, :bio, :working_field, :is_seller)
     end
 end

@@ -1,0 +1,76 @@
+<%= form_with(model: post) do |form| %>
+  <% if post.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, style: "display: block" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :slug, style: "display: block" %>
+    <%= form.text_field :slug %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.rich_text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :banner, style: "display: block" %>
+    <%= form.text_field :banner %>
+  </div>
+
+  <div>
+    <%= form.label :starting_price, style: "display: block" %>
+    <%= form.text_field :starting_price %>
+  </div>
+
+  <div>
+    <%= form.label :fields, style: "display: block" %>
+    <%= form.text_field :fields %>
+  </div>
+
+  <div>
+    <%= form.hidden_field :is_job %>
+  </div>
+
+    <div>
+    <%= form.hidden_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
+<script>
+let slug_input = document.querySelector("#post_slug");
+let title_input = document.querySelector("#post_title");
+
+function removeAccents(str) {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+}
+function generateSlug(string) {
+  return removeAccents(string)
+    .toLowerCase()
+    .replace(/[^a-z0-9-]/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+}
+slug_input.onclick = function() {
+  if(slug_input.value==""){
+  slug_input.value = generateSlug(title_input.value)
+  }
+};
+</script>

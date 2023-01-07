@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  slug: MyString
+  description: MyText
+  banner: MyString
+  starting_price: 1.5
+  user_id: 1
+  fields: 
+  is_job: false
+
+two:
+  title: MyString
+  slug: MyString
+  description: MyText
+  banner: MyString
+  starting_price: 1.5
+  user_id: 1
+  fields: 
+  is_job: false

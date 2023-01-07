@@ -8,7 +8,7 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="<%= root_path%>">Home</a></li>
                 <% if user_signed_in? %>
-                    <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="#">Request</a></li>
+                    <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="<%=new_post_path(current_user.id,"user","null")%>">Request</a></li>
                     <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="#">Dashboard</a></li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -22,7 +22,7 @@
                     </ul>
                     </li>
                 <% elsif seller_signed_in? %>
-                    <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="#">Post Job</a></li>
+                    <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="<%=new_post_path(current_seller.id,"seller","null")%>">Post Job</a></li>
                     <li class="nav-item"><a class="nav-link <%= current_page?(root_path) ? 'active' : ''%>" href="#">Offers</a></li>
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
