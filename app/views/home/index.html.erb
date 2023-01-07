@@ -1,1 +1,4 @@
-home
+ <%= render 'home/header' %>
+ <div class="container">
+  <%= render 'home/jobs' ,{jobs: @jobs, per_page: @per_page} %>
+  </div>

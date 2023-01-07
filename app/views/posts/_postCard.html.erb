@@ -1,0 +1,16 @@
+<!-- Blog post-->
+<div class="card mb-4">
+    <a href="<%= post_slug_path(job.slug)%>"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+    <div class="card-body">
+        <div class="small text-muted"><%= job.created_at.to_date%></div>
+        <h2 class="card-title h4"><%= job.title%></h2>
+        <%# <hr class="dropdown-divider"> %>
+        <div class="avatar avatar-sm">
+                    <img class="rounded-circle" src="https://prium.github.io/falcon/v3.14.0/assets/img/team/3-thumb.png" alt=""width="35" height="35">
+                    <%= User.find(job.user_id).name%>
+        </div>
+        <%# <a class="btn btn-primary" href="./page.html">Read more →</a> %>
+    </div>
+      <div class="card-footer bg-transparent border-success"> Starting at <%= job.starting_price%>$</div>
+
+</div>

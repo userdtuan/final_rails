@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-lg-8">
+    <!-- Nested row for non-featured blog posts-->
+        <div class="row">
+            <% jobs.each_slice(2) do |job2| %>
+                <div class="col-lg-6">
+                <% job2.each do |job| %>
+                        <%= render 'posts/postCard',{job: job} %>
+                <%end %>
+                </div>
+            <% end %>
+        </div>
+        <%= render 'home/pagination',{per_page: per_page}  %>
+    </div>
+    <div class="col-lg-4">
+        <%= render 'home/search' %>
+        <%= render 'home/category' %>
+        <%= render 'home/side' %>
+    </div>
+
+</div>

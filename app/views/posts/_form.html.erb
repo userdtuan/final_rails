@@ -56,6 +56,10 @@
 <script>
 let slug_input = document.querySelector("#post_slug");
 let title_input = document.querySelector("#post_title");
+function generateToken() {
+  const timestamp = new Date().getTime().toString();
+  return timestamp.slice(-6);
+}
 
 function removeAccents(str) {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
@@ -70,7 +74,8 @@ function generateSlug(string) {
 }
 slug_input.onclick = function() {
   if(slug_input.value==""){
-  slug_input.value = generateSlug(title_input.value)
+  const token = generateToken();
+  slug_input.value = generateSlug(title_input.value)+"-"+token
   }
 };
 </script>
