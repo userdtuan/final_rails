@@ -1,8 +1,8 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @profile %>
 
 <div>
+<% if (current_user and current_user.id == @profile.user_id and @profile.is_seller==false) or (current_seller and current_seller.id == @profile.user_id and @profile.is_seller==true)%>
   <%= link_to "Edit this profile", edit_profile_path(@profile) %> |
   <%= button_to "Destroy this profile", @profile, method: :delete %>
+<% end %>
 </div>

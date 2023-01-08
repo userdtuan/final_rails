@@ -7,7 +7,7 @@
         <%# <hr class="dropdown-divider"> %>
         <div class="avatar avatar-sm">
                     <img class="rounded-circle" src="https://prium.github.io/falcon/v3.14.0/assets/img/team/3-thumb.png" alt=""width="35" height="35">
-                    <%= User.find(job.user_id).name%>
+                    <%= job.is_job ? Seller.find(job.user_id).name: User.find(job.user_id).name%>
         </div>
         <%# <a class="btn btn-primary" href="./page.html">Read more →</a> %>
     </div>

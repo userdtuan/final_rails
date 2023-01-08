@@ -90,7 +90,7 @@ def check_information
   profile = Profile.find_by({user_id: seller_signed_in? ? current_seller.id : current_user.id})
   if profile == nil
     respond_to do |format|
-      format.html { redirect_to edit_user_registration_path, notice: "You have to update your profile before doing this action!." }
+      format.html { redirect_to root_path, notice: "You have to update your profile before doing this action!." }
       format.json { head :no_content }
     end
   end
