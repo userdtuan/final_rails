@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to root_path, notice: "Post was successfully created." }
+        format.html { redirect_to post_slug_path(@post.slug), notice: "Post was successfully created." }
         format.json { head :no_content }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -44,11 +44,25 @@ class PostsController < ApplicationController
     end
   end
 
+  def createRequest
+    # @post = Post.new(post_params)
+
+    # respond_to do |format|
+    #   if @post.save
+    #     format.html { redirect_to post_slug_path(@post.slug), notice: "Post was successfully created." }
+    #     format.json { head :no_content }
+    #   else
+    #     format.html { render :new, status: :unprocessable_entity }
+    #     format.json { render json: @post.errors, status: :unprocessable_entity }
+    #   end
+    # end
+  end
+
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to root_path, notice: "Post was successfully updated." }
+        format.html { redirect_to post_slug_path(@post.slug), notice: "Post was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render :edit, status: :unprocessable_entity }

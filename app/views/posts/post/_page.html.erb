@@ -10,8 +10,9 @@
                             <!-- Post meta content-->
                             <div class="text-muted fst-italic mb-2">Posted on <%= post.created_at.to_date%> by <%= post.is_job ? Seller.find(post.user_id).name : User.find(post.user_id).name%></div>
                             <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                            <% post.fields.each do |field| %>
+                                <a class="badge bg-secondary text-decoration-none link-light" href="<%= category_job_path(field)%>"><%= field%></a>
+                            <%end%>
                         </header>
                         <!-- Preview image figure-->
                         <% if post.banner != ""%>
@@ -24,14 +25,15 @@
                          </p>
                         </section>
                     </article>
-                    <!-- Comments section-->
-                    <%= render 'profiles/profile', {profile: Profile.find_by({user_id: post.user_id, is_seller: post.is_job ? true : false})}%>
+                    <!-- Profile section-->
+                    <% profile =  Profile.find_by({user_id: post.user_id, is_seller: post.is_job ? true : false}) %>
+                    <%= render 'profiles/profile', {profile: profile }%>
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-4">
                             <%= render 'home/search' %>
                             <%= render 'home/category' %>
-                            <%= render 'home/side' %>
+                            <%= render 'home/side', {profile: profile, post: post} %>
                 </div>
             </div>
         </div>

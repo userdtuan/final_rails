@@ -4,9 +4,16 @@ Rails.application.routes.draw do
   devise_for :sellers
   devise_for :users, controllers: { sessions: 'users/sessions' }
   root "home#index"
-  get '/posts/page/:page' => 'home#index', :as => 'page'
   get '/pages/user' => 'page#user', :as => 'user_page'
   get '/profiles/new/:user_id/:is_seller' => 'profiles#new', :as => "new_profile"
-  get '/posts/new/:user_id/:is_job/:receiver_id' => 'posts#new', :as => "new_post"
-  get '/posts/:slug' => 'posts#show', :as => "post_slug"
+  get '/freelancer-page' => 'home#freelancer_page', :as => "freelancer_page"
+
+  scope '/jobs' do
+    get '/search/:keyword' => 'home#search_job', :as => "search_job"
+    get '/category/:keyword/:page' => 'home#category_job', defaults: { page: 1 }, :as => "category_job"
+    get '/page/:page' => 'home#index', :as => 'page'
+    get '/new/:user_id/:is_job/:receiver_id' => 'posts#new', :as => "new_post"
+    get '/:slug' => 'posts#show', :as => "post_slug"
+    get '/request/:seller_id' => 'posts#createRequest', :as => "job_request"
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_08_231854) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_08_235445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,7 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_08_231854) do
     t.string "banner"
     t.float "starting_price"
     t.integer "user_id", null: false
-    t.json "fields", null: false
+    t.string "fields", null: false
     t.boolean "is_job", default: false, null: false
     t.integer "receiver_id"
     t.datetime "created_at", null: false

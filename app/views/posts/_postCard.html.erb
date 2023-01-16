@@ -6,7 +6,7 @@
         <h2 class="card-title h4"><%= job.title%></h2>
         <%# <hr class="dropdown-divider"> %>
         <div class="avatar avatar-sm">
-                    <img class="rounded-circle" src="https://prium.github.io/falcon/v3.14.0/assets/img/team/3-thumb.png" alt=""width="35" height="35">
+                    <img class="rounded-circle" src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/1408a540b43535d0cad11fb8e5ef05cc-1652407835174/ad5adae8-ef44-44d4-b389-482735f7a85d.jpg" alt=""width="35" height="35">
                     <%= job.is_job ? Seller.find(job.user_id).name: User.find(job.user_id).name%>
         </div>
         <%# <a class="btn btn-primary" href="./page.html">Read more →</a> %>

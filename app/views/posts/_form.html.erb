@@ -23,7 +23,7 @@
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
+    <%= form.rich_text_area :description, style: "min-height: 250px"%>
   </div>
 
   <div>
@@ -37,8 +37,9 @@
   </div>
 
   <div>
-    <%= form.label :fields, style: "display: block" %>
-    <%= form.text_field :fields %>
+    <%= form.label :fields, style: "display: inline" %><i> (seperate each with a comma, Ex: html, css, js )</i>
+    <%= form.text_field :fields , value: post.fields.join(', ')%>
+    
   </div>
 
   <div>

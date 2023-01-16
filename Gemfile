@@ -2,6 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'htmlbeautifier'
+ gem 'erb-formatter'
 
 gem "paperclip", "~> 6.0.0"
 

@@ -2,6 +2,7 @@
     <div class="col-lg-8">
     <!-- Nested row for non-featured blog posts-->
         <div class="row">
+        <% if jobs.length >2 %>
             <% jobs.each_slice(2) do |job2| %>
                 <div class="col-lg-6">
                 <% job2.each do |job| %>
@@ -9,13 +10,21 @@
                 <%end %>
                 </div>
             <% end %>
+        <% else %>
+            <% jobs.each do |job| %>
+                <div class="col-lg-6">
+                    <%= render 'posts/postCard',{job: job} %>
+                 </div>
+        <%end %>
+
+        <% end %>
         </div>
-        <%= render 'home/pagination',{per_page: per_page}  %>
+        <%= render 'home/pagination',{per_page: per_page, jobs: jobs}  %>
     </div>
     <div class="col-lg-4">
         <%= render 'home/search' %>
         <%= render 'home/category' %>
-        <%= render 'home/side' %>
+        <%# <%= render 'home/side' %>
     </div>
 
 </div>

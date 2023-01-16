@@ -366,7 +366,10 @@
    font-size: inherit;
    line-height: inherit;
  }
- 
+ input[type=text],
+ textarea {
+  width: 100%;
+ }
  button,
  select {
    text-transform: none;

@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
 
               devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:name, :email, :password, :current_password)}
          end
+     
+     def after_sign_in_path_for(resource)
+          freelancer_page_path # your path
+     end
 end
