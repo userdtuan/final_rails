@@ -1,0 +1,13 @@
+
+<tr>
+  <td><%= post.title%> </th>
+  <td><%= post.starting_price%> </td>
+  <td>
+      <a class="btn btn-sm btn-primary" href="<%= post_path(post.id) %>">See</a>
+      <% if current_page?(manage_job_path) or user_signed_in?%>
+        <%= link_to "Edit", edit_post_path(post), class:"btn btn-sm btn-warning" %>
+        <%= button_tag 'Delete', "data-bs-target"=>"#modalDelete#{post.id}", type: 'reset', class:"btn btn-sm btn-danger", "data-bs-toggle"=>"modal" %>
+        <%= render 'posts/modalDelete' ,{post: post, id: post.id}%>
+      <% end %>
+  </td>
+</tr>

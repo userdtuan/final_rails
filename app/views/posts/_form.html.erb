@@ -16,42 +16,54 @@
     <%= form.text_field :title %>
   </div>
 
+<% if seller_signed_in? %>
   <div>
     <%= form.label :slug, style: "display: block" %>
     <%= form.text_field :slug %>
   </div>
+<% else %>
+    <%= form.hidden_field :slug %>
+<% end %>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
+    <%= form.label (seller_signed_in? ? :description : "Requirement"), style: "display: block" %>
     <%= form.rich_text_area :description, style: "min-height: 250px"%>
   </div>
 
+<% if seller_signed_in? %>
   <div>
     <%= form.label :banner, style: "display: block" %>
     <%= form.text_field :banner %>
   </div>
+<% end %>
 
   <div>
-    <%= form.label :starting_price, style: "display: block" %>
+    <%= form.label (seller_signed_in? ? :starting_price : "Price"), style: "display: block" %>
     <%= form.text_field :starting_price %>
   </div>
-
+<% if seller_signed_in? %>
   <div>
     <%= form.label :fields, style: "display: inline" %><i> (seperate each with a comma, Ex: html, css, js )</i>
     <%= form.text_field :fields , value: post.fields.join(', ')%>
     
   </div>
 
+  <% end %>
+
   <div>
     <%= form.hidden_field :is_job %>
   </div>
 
-    <div>
+  <div>
     <%= form.hidden_field :user_id %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.hidden_field :receiver_id %>
+  </div>
+
+  <div>
+    <%= form.submit "Create" %>
   </div>
 <% end %>
 <script>

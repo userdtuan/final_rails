@@ -1,6 +1,8 @@
 <!-- Blog post-->
 <div class="card mb-4">
-    <a href="<%= post_slug_path(job.slug)%>"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+    <% if job.is_job == true %>
+    <a href="<%= job.slug.length > 1 ? post_slug_path(job.slug) : post_path(job.id)%>"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+    <%end%>
     <div class="card-body">
         <div class="small text-muted"><%= job.created_at.to_date%></div>
         <h2 class="card-title h4"><%= job.title%></h2>
@@ -9,8 +11,10 @@
                     <img class="rounded-circle" src="https://fiverr-res.cloudinary.com/t_profile_thumb,q_auto,f_auto/attachments/profile/photo/1408a540b43535d0cad11fb8e5ef05cc-1652407835174/ad5adae8-ef44-44d4-b389-482735f7a85d.jpg" alt=""width="35" height="35">
                     <%= job.is_job ? Seller.find(job.user_id).name: User.find(job.user_id).name%>
         </div>
-        <%# <a class="btn btn-primary" href="./page.html">Read more →</a> %>
+        <%# <a class="btn btn-primary" href="./page.html">Read more →</a> %> 
     </div>
-      <div class="card-footer bg-transparent border-success"> Starting at <%= job.starting_price%>$</div>
-
+      <div class="card-footer bg-transparent border-success">
+        <p> Starting at <%= job.starting_price%>$</p>
+        <a class="btn btn-primary" href="<%= post_path(job.id) %>">See</a>
+      </div>
 </div>
