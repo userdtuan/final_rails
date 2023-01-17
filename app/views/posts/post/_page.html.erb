@@ -37,9 +37,9 @@
                             <%= render 'home/search' %>
                             <%= render 'home/category' %>
                 <% end %>
-                            <% if !seller_signed_in? and post.is_job== true %>
-                                <%= render 'home/side', {profile: profile, post: post, logged: true} %>
-                            <% end %>
+                <% if (seller_signed_in? and post.is_job==false) or (user_signed_in? and post.is_job==true) or (!seller_signed_in? and !user_signed_in?)%>
+                <%= render 'home/side', {profile: profile, post: post, logged: true} %>
+                <%end%>
                 </div>
             </div>
         </div>

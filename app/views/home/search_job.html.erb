@@ -1,5 +1,6 @@
-
  <div class="container">
- <h3>jobs for "<%= @search%>"</h3>
+ <br/>
+ <h3>jobs for keyword "<%= @category_key%>"</h3>
  <hr>
+   <%= render 'home/jobs' ,{jobs: @jobs, per_page: @per_page} %>
 </div>

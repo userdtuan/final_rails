@@ -3,6 +3,9 @@
     <tr>
       <th scope="col">Title</th>
       <th scope="col">Price</th>
+      <% if user_signed_in? and current_page?(manage_request_path) %>
+      <th scope="col">Status</th>
+      <%end%>
       <th scope="col">Action</th>
 
     </tr>

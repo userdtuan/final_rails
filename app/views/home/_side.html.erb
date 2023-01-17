@@ -1,12 +1,20 @@
                                <!-- Side widget-->
                 <div class="card mb-4">
-                    <div class="card-header">Make request</div>
+                    <div class="card-header">Make  <%= user_signed_in? ? "request" : "offer" %></div>
                     <div class="card-body">
                         <p>Starting at : <%= post.starting_price%>$</p>
                         <% if user_signed_in? != false%>
                         <a class="btn btn-primary" href="<%= new_post_path(current_user.id,"user",profile.user_id) %>">Continue</a>
-                        <% else %>
-                        <p>Sign In to make request</p>
+                        <% elsif%>
+                            <% if (Offer.where(post_id:post.id)).length==0%>
+                                <% if (!seller_signed_in? and !user_signed_in?)%>
+                                    <p>Sign In As A User To Continue</p>
+                                 <% else %>
+                                <a class="btn btn-primary" href="<%= new_offer_path(post.id) %>">Offer</a>
+                                <%end%>
+                            <%else%>
+                            <p>You have made an offer for this request</p>
+                            <%end%>
                         <% end %>
                     </div>
                 </div>

@@ -11,7 +11,9 @@ class HomeController < ApplicationController
     end 
 
     def search_job
-        @search = params[:keyword]
+        @category_key = params[:keyword]
+        @total_jobs = Post.where("fields Like ?", "%#{@category_key}%")
+        @jobs = Post.offset(@offset).limit(@per_page).where("is_job = true and (fields Like ? or title Like ?)", "%#{@category_key}%", "%#{@category_key}%")
     end
 
     def category_job

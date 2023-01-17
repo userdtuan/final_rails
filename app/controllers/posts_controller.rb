@@ -57,11 +57,13 @@ class PostsController < ApplicationController
       @posts = Post.where(is_job:false, user_id: current_user.id)
     end
   end
+
   def manage_job
     @posts = Post.where(is_job:true, user_id: current_seller.id)
   end
+  
   def manage_offer
-    @posts = Post.where(is_job:false, receiver_id: current_seller.id)
+    @offers = Offer.where(seller_id: current_seller.id)
   end
 
   # PATCH/PUT /posts/1 or /posts/1.json

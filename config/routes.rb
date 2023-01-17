@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :offers, :except => [:new]
   resources :posts, :except => [:new]
   resources :profiles, :except => [:new]
   devise_for :sellers
@@ -6,10 +7,11 @@ Rails.application.routes.draw do
   root "home#index"
   get '/pages/user' => 'page#user', :as => 'user_page'
   get '/profiles/new/:user_id/:is_seller' => 'profiles#new', :as => "new_profile"
-  get '/freelancer-page' => 'home#freelancer_page', :as => "freelancer_page"
+  get '/offer/new/:post_id' => 'offers#new', :as => "new_offer"
+  get '/dashboard/offers' => 'posts#manage_offer', :as => "manage_offer"
 
   scope '/jobs' do
-    get '/search/:keyword' => 'home#search_job', :as => "search_job"
+    get '/search/:keyword/:page' => 'home#search_job', defaults: { page: 1 }, :as => "search_job"
     get '/category/:keyword/:page' => 'home#category_job', defaults: { page: 1 }, :as => "category_job"
     get '/page/:page' => 'home#index', :as => 'page'
     get '/new/:user_id/:is_job/:receiver_id' => 'posts#new', :as => "new_post"
