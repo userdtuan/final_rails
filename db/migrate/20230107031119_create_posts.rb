@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[7.0]
     create_table :posts do |t|
       t.string :title, null: false
       t.string :slug, null: false
-      t.text :description, null: false
+      t.text :description, null: true
       t.string :banner, null: true
       t.float :starting_price, null: true
       t.integer :user_id, null: false

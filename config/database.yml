@@ -20,7 +20,7 @@ default: &default
   pool: 5432
   username: postgres
   password: postgrespw
-  host: 172.17.0.2
+  host: 172.17.0.3
 
 development:
   <<: *default

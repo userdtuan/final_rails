@@ -33,7 +33,8 @@
 <% if seller_signed_in? %>
   <div>
     <%= form.label :banner, style: "display: block" %>
-    <%= form.text_field :banner %>
+    <%= form.file_field :banner, accept: 'image/png,image/jpeg' %>
+
   </div>
 <% end %>
 
